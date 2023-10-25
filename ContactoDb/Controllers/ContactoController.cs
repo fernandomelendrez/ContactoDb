@@ -46,19 +46,41 @@ namespace ContactoDb.Controllers
         public IActionResult Editar(int IdContacto) 
         {
             ContactoModel contacto = contactoDatos.ObtenerContacto(IdContacto); 
-            return View();
+            return View(contacto);
         }
         [HttpPost]
         public IActionResult Editar(ContactoModel model)
         {
             var resultado = contactoDatos.EditarContacto(model);
-            if(resultado)
+            if (resultado)
             {
                 return RedirectToAction("Listar");
             }
             else
             {
-                return View();            }
+                return View();
+            }
         }
+
+        [HttpGet]
+        public IActionResult Eliminar(int idContacto)
+        {
+            var contacto = contactoDatos.ObtenerContacto(idContacto);
+            return View(contacto);
+        }
+        [HttpPost]
+        public IActionResult Eliminar(ContactoModel model)
+        {
+            var respuesta = contactoDatos.EliminarContacto(model);
+            if(respuesta)
+            {
+                return RedirectToAction("Listar");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        
     }
 }
