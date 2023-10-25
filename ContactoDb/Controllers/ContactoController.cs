@@ -13,7 +13,7 @@ namespace ContactoDb.Controllers
 
         ContactoDatos contactoDatos = new ContactoDatos();
 
-        //Holamundo
+        //Holamundo Ya termine
         public IActionResult Listar()
         {
             var lista = contactoDatos.ListarContacto();
